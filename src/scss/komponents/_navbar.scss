@@ -1,0 +1,316 @@
+
+.wrapper{
+    display: flex;
+    position: relative;
+
+    @media (max-width: $breakpoint768) {
+        flex-direction: column;
+   }
+}
+
+
+.nav{
+    overflow: auto;
+    width: 365px;
+    height: 100vh;
+    padding: 50px;
+    z-index: 10;
+
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    background: #2D2D2D;
+    border-radius: 0px 0px 16px 0px;
+    animation: fade 0.1s linear;
+
+
+    @media (max-width: $breakpoint1200) {
+        padding: 25px;
+    }
+
+    @media (max-width: $breakpoint992) {
+        display: none;
+    }
+
+    @media (max-width: $breakpoint480) {
+       width: 100%;
+       max-width: 100%;
+    }
+
+    &__logo{
+        width: 50px;
+        height: 50px;
+
+        &-p{
+
+            margin-top: 10px;
+
+            font-style: normal;
+            font-weight: 500;
+            font-size: 25px;
+            line-height: 15px;
+            color: rgb(137, 71, 149);
+            
+        }
+
+    }
+
+    &__button{
+        margin: 60px 0px;
+
+ 
+        font-style: normal;
+        font-weight: 400;
+        font-size: 24px;
+        line-height: 30px;
+        color: #FFFFFF;
+        background: rgba(218, 0, 254, 1);
+        border-radius: 16px;
+        padding: 12px 50px;
+        transition: all ease .3s;
+
+        &:hover{
+           background:rgb(137, 71, 149);
+        }
+
+        @media (max-width: $breakpoint992) {
+            margin: 30px 0px;
+            width: 100%;
+        }
+
+        @media (max-width: $breakpoint480) {
+           font-size: 18px;
+           padding: 10px;
+        }
+    }
+
+    &__list{
+        display: flex;
+        justify-content: flex-start;
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 50px;
+
+        @media (max-width: $breakpoint992) {
+            gap: 25px;
+        }
+
+        @media (max-width: $breakpoint480) {
+            gap: 15px;
+         }
+
+        &-item{
+            display: flex;
+            align-items: center;
+            gap: 25px;
+
+            @media (max-width: $breakpoint992) {
+                gap: 15px;
+            }
+        }
+    }
+
+    &__link{
+ 
+        font-style: normal;
+        font-weight: 700;
+        font-size: 24px;
+        line-height: 30px;
+        color: #FFFFFF; 
+        transition: all ease .3s;   
+        
+        &:hover{
+            color: rgb(137, 71, 149);
+        }
+
+        @media (max-width: $breakpoint480) {
+            font-size: 18px;
+         }
+
+    }
+}
+
+.accordion {
+
+    margin-top: 60px;
+
+    @media (max-width: $breakpoint992) {
+        margin-top: 10px;
+    }
+
+    .accordion__item {
+
+        &.accordion__item-active {
+            .accordion__item-content {
+                display: block;
+            }
+
+            .trigger__img{
+                transform: rotate(90deg);
+                transition: all ease .3s;
+            }
+
+            
+
+        }
+
+
+        .accordion__item-trigger {
+            display: flex;
+            margin: 40px 0px;
+            align-items: center;
+            cursor: pointer;
+
+            @media (max-width: $breakpoint992) {
+                margin: 20px 0px;
+            }
+
+
+            .trigger__text {
+
+                font-style: normal;
+                font-weight: 400;
+                font-size: 24px;
+                line-height: 30px; 
+                color: #CBCBCB;  
+                
+                @media (max-width: $breakpoint480) {
+                    font-size: 18px;
+                 }
+            }
+
+            .trigger__img {
+                position: relative;
+                transition: all ease .3s;
+                margin-left: auto;
+                cursor: pointer;
+
+                    &-icon{
+                transition: all ease .3s;
+
+                        transform: rotate(0deg);
+                    }
+
+            }
+        }
+
+        .accordion__item-content {
+            padding-bottom: 20px;
+            display: none;
+            animation: fade .3s ease;
+
+            .content__text {
+                margin-top: 25px;
+                padding-left: 35px;
+
+                &:first-child {
+                    margin-top: 0;
+                }
+            }
+        }
+
+
+    }
+
+}
+
+.burger {
+    display: none;
+    cursor: pointer;
+}
+
+// Burger menu styles
+@media screen and (max-width: $burgerBreakpoint) {
+
+    // .burger
+    .burger {
+        display: block;
+        position: relative;
+        height: 20px;
+        width: 50px;
+        z-index: 102;
+        cursor: pointer;
+
+        margin: 40px 0px 0px 20px;
+
+        @media (max-width: $breakpoint480) {
+            width: 35px;
+         }
+
+        &.active-burger {
+            
+            position: absolute;
+            right: 20px;
+
+            &:before {
+                background: $burgerActiveColor;
+                transform: rotate(45deg);
+                transition: cubic-bezier(0.785, 0.135, 0.15, 0.86) 0.3s all;
+                top: 8px;
+            }
+
+            &:after {
+                background: $burgerActiveColor;
+                transform: rotate(-45deg);
+                bottom: 10px;
+                transition: cubic-bezier(0.785, 0.135, 0.15, 0.86) 0.3s all;
+            }
+
+            & span {
+                transform: scale(0);
+            }
+        }
+
+        &:before,
+        &:after {
+            content: '';
+            position: absolute;
+            height: 2px;
+            width: 100%;
+            background: $burgerColor;
+            transition: cubic-bezier(0.785, 0.135, 0.15, 0.86) 0.3s all;
+        }
+
+        &:before {
+            top: 0;
+        }
+
+        &::after {
+            bottom: 0;
+        }
+
+        span {
+            position: absolute;
+            top: 9px;
+            right: 0;
+            width: 100%;
+            background: $burgerColor;
+            height: 2px;
+            transform: scale(1);
+            transition: cubic-bezier(0.785, 0.135, 0.15, 0.86) 0.3s all;
+        }
+    }
+
+
+    .nav{
+        &.active {
+            display: flex;
+            
+            padding-top:100px ;
+
+            @media (max-width: $breakpoint480) {
+                padding-top: 50px;
+                padding-bottom: 50px;
+             }
+        }
+    }
+}
+
+
+
+
+
+
